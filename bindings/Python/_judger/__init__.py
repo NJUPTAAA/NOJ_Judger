@@ -2,7 +2,7 @@ import json
 import subprocess
 
 UNLIMITED = -1
-VERSION = 0x020101
+VERSION = 0x000100
 
 RESULT_SUCCESS = 0
 RESULT_WRONG_ANSWER = -1
