@@ -47,7 +47,7 @@ void child_process(FILE *log_fp, struct config *_config) {
     if (_config->memory_limit_check_only == 0) {
         if (_config->max_memory != UNLIMITED) {
             struct rlimit max_memory;
-            max_memory.rlim_cur = max_memory.rlim_max = (rlim_t) (_config->max_memory) * 2;
+            max_memory.rlim_cur = max_memory.rlim_max = (rlim_t) (_config->max_memory*2 > _config->max_memory+134217728 ? _config->max_memory*2 : _config->max_memory+134217728);
             if (setrlimit(RLIMIT_AS, &max_memory) != 0) {
                 CHILD_ERROR_EXIT(SETRLIMIT_FAILED);
             }
